@@ -7,7 +7,7 @@ def oracle(el, alist, func):
     return func(el, alist) == found
 
 def testsuite(tests, func):
+    results = []
     for case in tests:
-        if not oracle(case[0], case[1], func):
-            return False
-    return True
+        results += [oracle(case[0], case[1], func)]
+    return results
