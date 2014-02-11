@@ -28,6 +28,3 @@ def member(el, list):
 def member2(el, alist):
     A = sort(alist)
     return member(el, A)
-
-print member2(3, [1, 4, 2, 15, 6])
-print member2(4, [1, 4, 2, 15, 6])
