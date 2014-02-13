@@ -11,20 +11,20 @@ def sort(alist):
             j = j-1
     return A
 
-def member(el, list):
+def memberBin(el, alist):
     left = 0
-    right = len(list) - 1
+    right = len(alist) - 1
 
     x = (left + right) // 2
-    while list[x] != el and left <= right:
-        if el < list[x]:
+    while alist[x] != el and left <= right:
+        if el < alist[x]:
             right = x - 1
         else:
             left = x + 1
         x = (left + right) // 2
     
-    return (list[x] == el)
+    return (alist[x] == el)
 
-def member2(el, alist):
+def member(el, alist):
     A = sort(alist)
-    return member(el, A)
+    return memberBin(el, A)
