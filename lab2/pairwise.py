@@ -21,6 +21,10 @@ def pairwise(defaults,typicals):
                     result.add(tuple(newerinstance))
     return result
 
+def pairwise2(defaults,typicals):
+    testsuite = pairwise(defaults,typicals)
+    return [(t[0],list(t[1:])) for t in testsuite]
+
 # Frontend for pairwise.
 # easypairwise([1,2,3]) = pairwise([1,2,3],[{1,2,3},{1,2,3},{1,2,3}])
 def easypairwise(defaults):
