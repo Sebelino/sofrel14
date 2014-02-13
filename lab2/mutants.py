@@ -89,3 +89,21 @@ def member4(el, alist):
 def member5(el, alist):
     A = sort(alist)
     return memberBin(el, alist)	# memberBin(el, A) -> memberBin(el, alist)
+
+#
+#	Mutant 6
+#
+def sort6(alist):
+    A = alist[:]
+    for i in range(len(A)):
+        j = i
+        while j > 0 and A[j-1] > A[j]:
+            temp = A[i-1]	# A[j-1] ->A[i-1]
+            A[j-1] = A[j]
+            A[j] = temp
+            j = j-1
+    return A
+
+def member6(el, alist):
+    A = sort6(alist)
+    return memberBin(el, A)
