@@ -29,6 +29,7 @@ def firsterror(tests, func):
 # Tests all functions in funcs[] on the test cases in tests[]
 # Returns the indices of the first error for each function
 def testall(tests, funcs):
+    print tests
     results = []
     for func in funcs:
         results += [firsterror(tests, func)]
