@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 def sort(alist):
-    A = alist
+    A = alist[:]
     for i in range(len(A)):
         j = i
         while j > 0 and A[j-1] > A[j]:
@@ -22,7 +22,7 @@ def memberBin(el, alist):
         else:
             left = x + 1
         x = (left + right) // 2
-    
+
     return (alist[x] == el)
 
 def member(el, alist):
