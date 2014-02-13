@@ -2,8 +2,8 @@
 
 from pprint import pprint
 
-# Generates a pairwise test suite for typicals v with default values d.
-# pairwise([1,2,3,4],[{1,2,3},{1,2,3},{1,2,3},{1,2,3,4}]) = {[4,4,3,4],...}
+# Generates a pairwise test suite for typicals typicals with default values defaults.
+# pairwise([1,2,3,4],[{1,2,3},{1,2,3},{1,2,3},{1,2,3,4}]) = {(4,4,3,4), (1,2,3,4),...}
 def pairwise(defaults,typicals):
     result = set()
     # First element
@@ -21,6 +21,11 @@ def pairwise(defaults,typicals):
                     result.add(tuple(newerinstance))
     return result
 
+# Frontend for pairwise.
+# easypairwise([1,2,3]) = pairwise([1,2,3],[{1,2,3},{1,2,3},{1,2,3}])
+def easypairwise(defaults):
+    return pairwise(defaults,[set(defaults)]*len(defaults))
+
 def onewise(defaults,typicals):
     result = set()
     for i in range(len(typicals)):
@@ -32,4 +37,6 @@ def onewise(defaults,typicals):
             result.add(tuple(instance))
     return result
 
-pprint(pairwise([1,2,3,4],[{1,2,3,4}]*4))
+#pprint(pairwise([3,1,2,4],[{1,2,3,4}]*4))
+#pprint(easypairwise([1,2,3,4]))
+#pprint(easypairwise([1,2]))
