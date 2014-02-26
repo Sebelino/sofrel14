@@ -26,22 +26,22 @@ LTLSPEC
 
 --properties for edge coverage
 LTLSPEC 
-	G(velocity=stop & accelerate -> X velocity=slow)
+	G(velocity=stop & accelerate -> X velocity!=slow)
 
 LTLSPEC 
-	G(velocity=slow & accelerate -> X velocity=fast)
+	G(velocity=slow & accelerate -> X velocity!=fast)
 
 LTLSPEC 
-	G(velocity=slow & !accelerate -> X velocity=stop)
+	G(velocity=slow & !accelerate & !brake -> X velocity!=stop)
 
 LTLSPEC 
-	G(velocity=slow & break -> X velocity=stop)
+	G(velocity=slow & brake -> X velocity!=stop)
 
 LTLSPEC 
-	G(velocity=fast & !accelerate -> X velocity=slow)
+	G(velocity=fast & !accelerate -> X velocity!=slow)
 
 LTLSPEC 
-	G(velocity=fast & break -> X velocity=stop)
+	G(velocity=fast & brake -> X velocity!=stop)
 
 -- write down the remaining properties yourself
 
