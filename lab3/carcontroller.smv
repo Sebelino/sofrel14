@@ -1,0 +1,32 @@
+MODULE main
+VAR
+	accelerate: boolean;
+	brake: boolean;
+	velocity: {stop, slow, fast};
+ASSIGN
+	init(velocity) := stop;
+	next(velocity) := case
+		      accelerate & !brake & velocity = stop : slow;
+		      accelerate & !brake & velocity = slow : fast;
+		      !accelerate & !brake & velocity = fast : slow;
+		      !accelerate & !brake & velocity = slow : stop;
+		      brake : stop;
+		      TRUE : velocity;
+	esac;
+
+-- properties for node coverage
+LTLSPEC 
+	G(! (velocity = stop))
+
+LTLSPEC 
+	G(! (velocity = slow))
+
+LTLSPEC
+	G(! (velocity = fast))
+
+--properties for edge coverage
+LTLSPEC 
+	G(velocity=stop & accelerate -> X velocity=slow)
+
+-- write down the remaining properties yourself
+

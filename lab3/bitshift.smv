@@ -1,0 +1,41 @@
+MODULE main 
+VAR 
+    Bit1 : boolean; -- Boolean variable
+    Bit2 : boolean;
+    input : boolean;
+    state : {s1,s2,s3,s4}; -- scalar variable
+ASSIGN
+    init(state) := s1;
+    init(Bit1) := FALSE;
+    init(Bit2) := FALSE; -- variable "input" is uninitialized!
+    next(state) := case
+       state = s1 & input = TRUE : s2;
+       state = s2 & input = FALSE : s3;
+       state = s2 & input = TRUE : s4;
+       state = s3 & input = FALSE : s1;
+       state = s3 & input = TRUE : s2;
+       state = s4 & input = FALSE : s3;
+       TRUE : state; -- why?
+    esac;
+    next(Bit1) := case 
+      -- To do: fill in this definition
+
+
+    esac;
+    next(Bit2) := case 
+     -- To do: fill in this definition
+
+
+    esac; -- can you optimize this? 
+
+LTLSPEC 
+   G (Bit1 <-> X Bit2)
+   -- the value of Bit1 new always equals the 
+   -- value of Bit2 in the next time step
+   -- This is obviously TRUE!
+
+LTLSPEC
+   G (Bit1 <-> X Bit1)
+   -- the value of Bit1 now always equals the 
+   -- value of Bit2 in the next time step
+   -- This is obviously FALSE!
