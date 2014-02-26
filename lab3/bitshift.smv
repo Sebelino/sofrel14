@@ -18,14 +18,10 @@ ASSIGN
        TRUE : state; -- why?
     esac;
     next(Bit1) := case 
-      -- To do: fill in this definition
-
-
+	TRUE : input;
     esac;
     next(Bit2) := case 
-     -- To do: fill in this definition
-
-
+	TRUE: Bit1;
     esac; -- can you optimize this? 
 
 LTLSPEC 
