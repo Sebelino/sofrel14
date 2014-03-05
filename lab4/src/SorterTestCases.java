@@ -350,5 +350,16 @@ public class SorterTestCases {
         Sorter.sort(testList);
 		Assert.assertEquals((int)listOfNumbers.get(0),testList[0]);
 	} // testMinimumElementOfList()	
+	@Test
+	public void testNull() {
+        boolean thrown = false;
+        try{
+            Sorter.sort(null);
+        }catch(NullPointerException e){
+            thrown = true;
+        }
+		Assert.assertTrue(thrown);
+	}
+
 
 } // SorterTestCases{}
