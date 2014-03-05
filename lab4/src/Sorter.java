@@ -45,7 +45,7 @@ public class Sorter {
 
 				}
 			}
-			
+			gap = (gap-1)/step;
 			
 			
 			/*
