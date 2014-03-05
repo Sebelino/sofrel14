@@ -350,6 +350,7 @@ public class SorterTestCases {
         Sorter.sort(testList);
 		Assert.assertEquals((int)listOfNumbers.get(0),testList[0]);
 	} // testMinimumElementOfList()	
+	
 	@Test
 	public void testNull() {
         boolean thrown = false;
@@ -359,6 +360,15 @@ public class SorterTestCases {
             thrown = true;
         }
 		Assert.assertTrue(thrown);
+	}
+	
+	@Test
+	public void testMinMaxIntList() {
+        int[] masterList = new int[]{Integer.MIN_VALUE, Integer.MAX_VALUE};
+        int[] testList = new int[]{Integer.MAX_VALUE, Integer.MIN_VALUE};
+        
+        Sorter.sort(testList);
+		Assert.assertArrayEquals( masterList, testList );
 	}
 
 
