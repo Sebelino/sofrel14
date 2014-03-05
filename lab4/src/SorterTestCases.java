@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
+import java.util.List;
 
 import org.junit.Assert;
 
@@ -314,7 +315,18 @@ public class SorterTestCases {
 	 */	
 	@Test
 	public void testMaximumElementOfList() {
-		fail("This test is failing because it is yet to be implemented");
+        int[] masterList = new int[]{32,6,-1,234,623,19,-342,523,2621,-23,0};
+        List<Integer> listOfNumbers = new ArrayList<Integer>();
+        for(int n : masterList){
+            listOfNumbers.add(n);
+        }
+        Collections.sort(listOfNumbers);
+        int[] testList = new int[masterList.length];
+        for(int i = 0;i < testList.length;i++){
+            testList[i] = masterList[i];
+        }
+        Sorter.sort(testList);
+		Assert.assertEquals((int)listOfNumbers.get(masterList.length-1),testList[masterList.length-1]);
 	} // testMaximumElementOfList()
 
 	/**
@@ -325,7 +337,18 @@ public class SorterTestCases {
 	 */	
 	@Test
 	public void testMinimumElementOfList() {
-		fail("This test is failing because it is yet to be implemented");
+        int[] masterList = new int[]{32,6,-1,234,623,19,-342,523,2621,-23,0};
+        List<Integer> listOfNumbers = new ArrayList<Integer>();
+        for(int n : masterList){
+            listOfNumbers.add(n);
+        }
+        Collections.sort(listOfNumbers);
+        int[] testList = new int[masterList.length];
+        for(int i = 0;i < testList.length;i++){
+            testList[i] = masterList[i];
+        }
+        Sorter.sort(testList);
+		Assert.assertEquals((int)listOfNumbers.get(0),testList[0]);
 	} // testMinimumElementOfList()	
 
 } // SorterTestCases{}
