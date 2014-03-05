@@ -31,7 +31,7 @@ public class Sorter {
 					int tmp = list[j];
 					int k = j - gap;
 					
-					while ( k >= 0 && list[k] != tmp ) {
+					while ( k >= 0 && list[k] > tmp ) {
 						list[k + gap] = list[k];
 						k -= gap;
 					}
