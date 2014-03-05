@@ -80,7 +80,15 @@ public class SorterTestCases {
 	 */	
 	@Test
 	public void testSortEmptyList() {
-		fail("This test is failing because it is yet to be implemented");
+		// Create some empty lists
+		int[] masterList = new int[0];
+		int[] testList = new int[0];
+		
+		// Sort one of them
+		Sorter.sort(testList);
+		
+		// Make sure they're still equal		
+		Assert.assertArrayEquals( masterList, testList );
 	} // testSortEmptyList()
 
    	/**
@@ -90,8 +98,20 @@ public class SorterTestCases {
 	 * See {@link Sorter#sort(int[])}
 	 */	
 	@Test
-	public void testSortOneElementList() {
-		fail("This test is failing because it is yet to be implemented");
+	public void testSortOneElementList() {		
+		final int lowerBound = -100000;
+		final int upperBound = -lowerBound;
+		
+		// Create two lists, each with the same randomly generated element
+		Random randomIntegerGenerator = new Random();
+		int randomInt = randomIntegerGenerator.nextInt( ( upperBound - lowerBound ) + 1 ) + lowerBound;
+		int[] masterList = {randomInt};
+		int[] testList = {randomInt};
+		
+		Sorter.sort(testList);
+
+		// Make sure they're equal		
+		Assert.assertArrayEquals( masterList, testList );
 	} // testSortOneElementList()
 
 	/**
@@ -101,8 +121,32 @@ public class SorterTestCases {
 	 * See {@link Sorter#sort(int[])}
 	 */	
 	@Test
-	public void testSortTwoElementsInCorrectOrderList() {		
-		fail("This test is failing because it is yet to be implemented");
+	public void testSortTwoElementsInCorrectOrderList() {
+		final int lowerBound = -100000;
+		final int upperBound = -lowerBound;
+		
+		// Create two lists, both with the same correctly ordered random integers
+		Random randomIntegerGenerator = new Random();
+		int randomInt1 = randomIntegerGenerator.nextInt( ( upperBound - lowerBound ) + 1 ) + lowerBound;
+		int randomInt2 = randomIntegerGenerator.nextInt( ( upperBound - lowerBound ) + 1 ) + lowerBound;
+		int[] masterList = new int[2];
+		int[] testList = new int[2];
+		if(randomInt1 > randomInt2) {
+			masterList[0] = randomInt2;
+			masterList[1] = randomInt1;
+			testList[0] = randomInt2;
+			testList[1] = randomInt1;
+		} else {
+			masterList[0] = randomInt1;
+			masterList[1] = randomInt2;
+			testList[0] = randomInt1;
+			testList[1] = randomInt2;			
+		}
+		
+		Sorter.sort(testList);
+
+		// Make sure they're equal		
+		Assert.assertArrayEquals( masterList, testList );
 	} // testSortTwoElementsInCorrectOrderList()
 
 	/**
@@ -113,7 +157,31 @@ public class SorterTestCases {
 	 */	
 	@Test
 	public void testSortTwoElementsInReverseOrderList() {		
-		fail("This test is failing because it is yet to be implemented");
+		final int lowerBound = -100000;
+		final int upperBound = -lowerBound;
+		
+		// Create two lists with the same random integers, one correctly ordered, one incorrectly
+		Random randomIntegerGenerator = new Random();
+		int randomInt1 = randomIntegerGenerator.nextInt( ( upperBound - lowerBound ) + 1 ) + lowerBound;
+		int randomInt2 = randomIntegerGenerator.nextInt( ( upperBound - lowerBound ) + 1 ) + lowerBound;
+		int[] masterList = new int[2];
+		int[] testList = new int[2];
+		if(randomInt1 > randomInt2) {
+			masterList[0] = randomInt2;
+			masterList[1] = randomInt1;
+			testList[0] = randomInt1;
+			testList[1] = randomInt2;
+		} else {
+			masterList[0] = randomInt1;
+			masterList[1] = randomInt2;
+			testList[0] = randomInt2;
+			testList[1] = randomInt1;			
+		}
+		
+		Sorter.sort(testList);
+
+		// Make sure they're equal		
+		Assert.assertArrayEquals( masterList, testList );
 	} // testSortTwoElementsInReverseOrderList()
 
 	/**
@@ -123,8 +191,20 @@ public class SorterTestCases {
 	 * See {@link Sorter#sort(int[])}
 	 */	
 	@Test
-	public void testSortTwoEqualElementsList() {		
-		fail("This test is failing because it is yet to be implemented");
+	public void testSortTwoEqualElementsList() {	
+		final int lowerBound = -100000;
+		final int upperBound = -lowerBound;
+		
+		// Create two lists, each with two of the same randomly generated element
+		Random randomIntegerGenerator = new Random();
+		int randomInt = randomIntegerGenerator.nextInt( ( upperBound - lowerBound ) + 1 ) + lowerBound;
+		int[] masterList = {randomInt, randomInt};
+		int[] testList = {randomInt, randomInt};
+		
+		Sorter.sort(testList);
+
+		// Make sure they're equal		
+		Assert.assertArrayEquals( masterList, testList );	
 	} // testSortTwoEqualElementsList()
 
 	/**
@@ -134,8 +214,21 @@ public class SorterTestCases {
 	 * See {@link Sorter#sort(int[])}
 	 */	
 	@Test
-	public void testSortThreeElementsInCorrectOrderList() {		
-		fail("This test is failing because it is yet to be implemented");
+	public void testSortThreeElementsInCorrectOrderList() {	
+		final int upperBound = 100000;
+		
+		// Create two lists, each with the same three randomly generated elements in ascending order
+		Random randomIntegerGenerator = new Random();
+		int randomInt1 = randomIntegerGenerator.nextInt( upperBound ) + 1;
+		int randomInt2 = randomInt1 + randomIntegerGenerator.nextInt( upperBound ) + 1;
+		int randomInt3 = randomInt2 + randomIntegerGenerator.nextInt( upperBound ) + 1;
+		int[] masterList = {randomInt1, randomInt2, randomInt3};
+		int[] testList = {randomInt1, randomInt2, randomInt3};
+		
+		Sorter.sort(testList);
+
+		// Make sure they're equal		
+		Assert.assertArrayEquals( masterList, testList );
 	} // testSortThreeElementsInCorrectOrderList()	
 
 	/**
@@ -146,7 +239,21 @@ public class SorterTestCases {
 	 */	
 	@Test
 	public void testSortThreeElementsWithFirstTwoSwappedList() {		
-		fail("This test is failing because it is yet to be implemented");
+		final int upperBound = 100000;
+
+		// Create two lists, with the same three randomly generated elements in ascending order
+		// in one, and the two first swapped in the other
+		Random randomIntegerGenerator = new Random();
+		int randomInt1 = randomIntegerGenerator.nextInt( upperBound ) + 1;
+		int randomInt2 = randomInt1 + randomIntegerGenerator.nextInt( upperBound ) + 1;
+		int randomInt3 = randomInt2 + randomIntegerGenerator.nextInt( upperBound ) + 1;
+		int[] masterList = {randomInt1, randomInt2, randomInt3};
+		int[] testList = {randomInt2, randomInt1, randomInt3};
+		
+		Sorter.sort(testList);
+
+		// Make sure they're equal		
+		Assert.assertArrayEquals( masterList, testList );
 	} // testSortThreeElementsWithFirstTwoSwappedList()	
 
 	/**
@@ -157,7 +264,21 @@ public class SorterTestCases {
 	 */	
 	@Test
 	public void testSortThreeElementsWithLastTwoSwappedList() {		
-		fail("This test is failing because it is yet to be implemented");
+		final int upperBound = 100000;
+
+		// Create two lists, with the same three randomly generated elements in ascending order
+		// in one, and the two first swapped in the other
+		Random randomIntegerGenerator = new Random();
+		int randomInt1 = randomIntegerGenerator.nextInt( upperBound ) + 1;
+		int randomInt2 = randomInt1 + randomIntegerGenerator.nextInt( upperBound ) + 1;
+		int randomInt3 = randomInt2 + randomIntegerGenerator.nextInt( upperBound ) + 1;
+		int[] masterList = {randomInt1, randomInt2, randomInt3};
+		int[] testList = {randomInt1, randomInt3, randomInt2};
+		
+		Sorter.sort(testList);
+
+		// Make sure they're equal		
+		Assert.assertArrayEquals( masterList, testList );
 	} // testSortThreeElementsWithLastTwoSwappedList()	
 
 	/**
@@ -168,7 +289,21 @@ public class SorterTestCases {
 	 */	
 	@Test
 	public void testSortThreeElementsInReverseOrderList() {		
-		fail("This test is failing because it is yet to be implemented");
+		final int upperBound = 100000;
+
+		// Create two lists, with the same three randomly generated elements in ascending order
+		// in one, and the two first swapped in the other
+		Random randomIntegerGenerator = new Random();
+		int randomInt1 = randomIntegerGenerator.nextInt( upperBound ) + 1;
+		int randomInt2 = randomInt1 + randomIntegerGenerator.nextInt( upperBound ) + 1;
+		int randomInt3 = randomInt2 + randomIntegerGenerator.nextInt( upperBound ) + 1;
+		int[] masterList = {randomInt1, randomInt2, randomInt3};
+		int[] testList = {randomInt3, randomInt2, randomInt1};
+		
+		Sorter.sort(testList);
+
+		// Make sure they're equal		
+		Assert.assertArrayEquals( masterList, testList );
 	} // testSortThreeElementsInReverseOrderList()	
 
 	/**
